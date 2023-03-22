@@ -1,17 +1,12 @@
-import { Component } from 'react';
 import css from './FeedbackOptions.module.css';
 import PropTypes from 'prop-types';
 
-export class FeedbackOptions extends Component {
-  handleFeedbackOption = evt => {
-    const { onLeaveFeedback } = this.props;
+export const FeedbackOptions = ({ onLeaveFeedback, options }) => {
+  const handleFeedbackOption = evt => {
     const { name } = evt.target;
 
     onLeaveFeedback(name);
   };
-
-  render() {
-    const { options } = this.props;
 
     return (
       <div className={css.feedbackOptions}>
@@ -21,7 +16,7 @@ export class FeedbackOptions extends Component {
             className={css.button}
             name={option}
             type="button"
-            onClick={this.handleFeedbackOption}
+            onClick={handleFeedbackOption}
           >
             {option}
           </button>
@@ -29,7 +24,7 @@ export class FeedbackOptions extends Component {
       </div>
     );
   }
-}
+
 
 FeedbackOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string).isRequired,
